@@ -1,0 +1,34 @@
+.container {
+    width: 100%;
+    height: 50px;
+    
+}
+.circle {
+    border-radius: 50%;
+    width:12px;
+    height:12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+.projectName_container{
+    display: flex;
+}
+.btn{
+    background-color: inherit;
+    color: #663399;
+    border: 2px solid #663399;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #663399;
+    color: #fff;
+}
+
+td{
+    padding: 10px 15px;
+}

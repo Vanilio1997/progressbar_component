@@ -4,3 +4,21 @@ export const tableData = [
     {id: 3, name: 'Tokenhunt.club', status: 'green', type: 'THC', conditions: 'x2,1 years', volume: 120000, roi: 23, free: 2, hedge: 20},
     {id: 4, name: 'Web3 P2P University', status: 'red', type: 'TRST', conditions: 'x2,1 years', volume: 200000, roi: 6, free: 1, hedge: 0},
 ]
+
+
+const tokenTypeObj = {}
+const projectsTypeObj = {}
+export const tokenTypeArr = []
+export const projectsTypeArr = []
+
+tableData.forEach((item) => {
+    if(!(projectsTypeObj.hasOwnProperty(item.name))){
+        projectsTypeObj[item.name] =  { filterType: item.name , isChecked: true}
+        projectsTypeArr.push({ filterType: item.name , isChecked: true})
+
+    }
+    if(!(tokenTypeObj.hasOwnProperty(item.type))){
+        tokenTypeObj[item.type] =  { filterType: item.type , isChecked: true}
+        tokenTypeArr.push({ filterType: item.name , isChecked: true})
+    }
+})

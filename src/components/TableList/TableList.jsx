@@ -1,18 +1,60 @@
 import React from 'react'
+import styles from './TableList.module.css'
 
 export const TableList = (props) => {
     const {id, name, status, roi, type, conditions, free, hedge, volume} = props.tableElement
-    console.log(props)
+    
+    let backgroundColor = ''
+    switch(status){
+      case 'red' :
+        backgroundColor = '#FFB6C1';
+        break
+      case 'green' : 
+      backgroundColor = '#90EE90';
+        break        
+      default :
+      backgroundColor = '#FFFFE0'
+    }
+
+    let currentVolume = []
+    let valueNumberArr = volume.toString().split('')
+    let numberPlace = 0
+
+    const btnClick = (e) => {
+      e.stopPropagation()
+      alert(id)
+    }
+
+    for(let i = valueNumberArr.length - 1 ;  i>= 0 ; i--){
+      numberPlace++
+      if(numberPlace === 3){
+        numberPlace = 0;
+        currentVolume.push(valueNumberArr[i])
+        if(i!== 0){
+          currentVolume.push(' ')
+        }
+      } else {
+        currentVolume.push(valueNumberArr[i])
+      }
+    }
+
+    currentVolume = currentVolume.reverse().join('')
+
   return (
-    <tr>
-      <td>{name}</td>
+    <tr style={{backgroundColor: backgroundColor}} className={styles.container} onClick={(e) =>  console.log(e)}>
+    <td>
+      <div className={styles.projectName_container}>
+        <div  className={styles.circle} style={{backgroundColor: status}}></div>
+        {name}
+      </div>
+    </td>
       <td>{type}</td>
       <td>{conditions}</td>
-      <td>${volume}</td>
+      <td>${currentVolume}</td>
       <td>{roi} %</td>
       <td>{free}</td>
       <td>{hedge}%</td>
-      <td><button>buy</button></td>
+      <td><button onClick={btnClick} className={styles.btn}>buy</button></td>
     </tr>
   )
 }

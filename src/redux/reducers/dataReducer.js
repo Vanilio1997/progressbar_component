@@ -1,7 +1,10 @@
-import {tableData} from '../../data'
+import {tableData, projectsTypeArr ,tokenTypeArr} from '../../data'
+
 
 let initialState = {
     tableData: tableData,
+    projectsFilter: projectsTypeArr,
+    tokenTypeFilter: tokenTypeArr,
     filtrSortData: tableData
 }
 

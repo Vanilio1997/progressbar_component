@@ -30,5 +30,33 @@
   }
 .header_container{
     padding: 20px;
-    background-color: #d1d1d1;
+    color: #6a6a6a;
+}
+.filterSettings{
+  background-color: #6a6a6a;
+  color: white;
+  padding: 0 4px;
+  border-radius: 2px;
+  margin: 3px;
+}
+
+.header_sortElement_container{
+  display: flex;
+  gap: 4px;
+}
+
+.sortElement_direction_container{
+  display: flex;
+  flex-direction: column; 
+}
+
+.triangleUp{
+  border: 5px solid transparent;
+  border-bottom: 5px solid rgb(0, 0, 0);
+  margin-bottom: 3px;
+}
+
+.triangleDown{
+  border: 5px solid transparent;
+   border-top: 5px solid rgb(0, 0, 0);
 }
