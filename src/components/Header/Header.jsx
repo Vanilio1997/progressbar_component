@@ -19,7 +19,6 @@ export const Header = () => {
     dispatch(objToDispatch)
     setIsActiveTab(currentValue)
   }
-  console.log(isActiveTab);
   
   return (
     <> 

@@ -1,9 +1,16 @@
 import React from 'react'
+import { useSelector , useDispatch} from 'react-redux'
 
 export const FilterElement = (props) => {
+  const dispatch = useDispatch()
   const {filterCheckboxSettings} = props
-  console.log(filterCheckboxSettings);
   return (
-<div> <input type='checkbox' checked={filterCheckboxSettings.isChecked} /> <span>{filterCheckboxSettings.filterType}</span> </div> 
+    <div> 
+      <input 
+        type='checkbox' 
+        checked={filterCheckboxSettings.isChecked} 
+        onChange={() => dispatch({type:'PROJECTS_FILTER' , payload: filterCheckboxSettings.id})} />        
+        <span>{filterCheckboxSettings.filterType}</span>
+    </div> 
   )
 }

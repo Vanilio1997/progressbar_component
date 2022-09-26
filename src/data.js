@@ -13,12 +13,11 @@ export const projectsTypeArr = []
 
 tableData.forEach((item) => {
     if(!(projectsTypeObj.hasOwnProperty(item.name))){
-        projectsTypeObj[item.name] =  { filterType: item.name , isChecked: true}
-        projectsTypeArr.push({ filterType: item.name , isChecked: true})
-
+        projectsTypeObj[item.name] =  { filterType: item.name }
+        projectsTypeArr.push({ filterType: item.name , isChecked: true, id:item.id})
     }
     if(!(tokenTypeObj.hasOwnProperty(item.type))){
-        tokenTypeObj[item.type] =  { filterType: item.type , isChecked: true}
-        tokenTypeArr.push({ filterType: item.name , isChecked: true})
+        tokenTypeObj[item.type] =  { filterType: item.type }
+        tokenTypeArr.push({ filterType: item.type , isChecked: true, id:item.id})
     }
 })

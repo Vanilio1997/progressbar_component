@@ -5,10 +5,10 @@ import styles from './TableItem.module.css'
 
 const TableItem = () => {
 
-    let tableElements = useSelector(store => store.table.filterSortData)
-    const sortValue = useSelector(store => store.table.sortValue)
+  let tableElements = useSelector(store => store.table.filterSortData)
+  const sortValue = useSelector(store => store.table.sortValue)
 
-    useEffect( () => {} ,[sortValue] )
+  useEffect( () => {} ,[sortValue] )
   return (
     <>
         {

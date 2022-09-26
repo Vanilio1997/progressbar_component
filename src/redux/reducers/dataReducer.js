@@ -1,6 +1,7 @@
 import {tableData, projectsTypeArr ,tokenTypeArr} from '../../data'
 import sortingByNumber from '../../commons/sortingByNumber'
 import sortingByText from '../../commons/sortingByText'
+import mainFilterFunc from '../../commons/mainFilterFunc'
 
 
 let initialState = {
@@ -14,16 +15,19 @@ let initialState = {
 
 export const dataReducer = (state = initialState , action) =>{
     switch(action.type){
-        case 'SORT_BY_NUMBER' : {
-                
+        case 'SORT_BY_NUMBER' : {           
             const newData = sortingByNumber(state.filterSortData , action.payload)
             return {...state , filterSortData: newData ,sortValue: action.payload}
         }
         case 'SORT_BY_TEXT' : {
-            console.log(action.payload , state.filterSortData);
             const newData = sortingByText( state.filterSortData , action.payload)
             console.log(newData);
             return {...state , filterSortData: newData,sortValue: action.payload}
+        }
+        case 'PROJECTS_FILTER' : {
+
+            const {tableData , projectFilterData} = mainFilterFunc(state.tableData , action.payload,state.projectsFilter ,state.sortValue)
+            return {...state , filterSortData: tableData , projectsFilter: projectFilterData}
         }
         default: 
             return state
