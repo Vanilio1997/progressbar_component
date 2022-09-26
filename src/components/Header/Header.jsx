@@ -1,17 +1,25 @@
 import React , {useState} from 'react'
 import styles from './Header.module.css'
-import { useSelector } from 'react-redux'
+import { useSelector , useDispatch} from 'react-redux'
 import Filter from '../Filter'
 
 
 export const Header = () => {
-  // <a href="#" title="Start" className={styles.arrow}>up</a>
 
   const projectsFilter = useSelector(store => store.table.projectsFilter)
   const tokenTypeFilter = useSelector(store => store.table.tokenTypeFilter)
+
+  const dispatch = useDispatch()
   
   const [isProojectsFilter, setIsProojectsFilter] = useState(false);
   const [isTokensTypeFilter, setIsTokensTypeFilter] = useState(false);
+  const [isActiveTab, setIsActiveTab] = useState('')
+  
+  function selectSortParams(objToDispatch , currentValue){
+    dispatch(objToDispatch)
+    setIsActiveTab(currentValue)
+  }
+  console.log(isActiveTab);
   
   return (
     <> 
@@ -23,8 +31,16 @@ export const Header = () => {
             {isProojectsFilter && <Filter filterSettings={projectsFilter} />}
               Project
             <div  className={styles.sortElement_direction_container}>
-              <div className={styles.triangleUp}></div>
-              <div className={styles.triangleDown}></div>
+              <div 
+                data-item='ascendingText'
+                onClick={(e) =>  selectSortParams({type: 'SORT_BY_TEXT' , payload:e.target.dataset.item } , e.target.dataset.item)} 
+                className={isActiveTab === 'ascendingText' ? styles.active_triangleUp :styles.triangleUp}
+                >        
+              </div>
+              <div 
+                data-item='descendingText'
+                onClick={(e) =>  selectSortParams({type: 'SORT_BY_TEXT' , payload:e.target.dataset.item } , e.target.dataset.item)}
+                className={isActiveTab === 'descendingText' ? styles.active_triangleDown :  styles.triangleDown}></div>
             </div>
           </div>
         </td>
@@ -38,8 +54,16 @@ export const Header = () => {
           <div className={styles.header_sortElement_container}>
             Volume
             <div  className={styles.sortElement_direction_container}>
-              <div className={styles.triangleUp}></div>
-              <div className={styles.triangleDown}></div>
+              <div 
+                data-item='ascendingNumber' 
+                onClick={(e) => selectSortParams({type: 'SORT_BY_NUMBER' , payload:e.target.dataset.item } , e.target.dataset.item)} 
+                className={isActiveTab === 'ascendingNumber' ? styles.active_triangleUp :styles.triangleUp}>
+              </div>
+              <div 
+                data-item='descendingNumber' 
+                onClick={(e) => selectSortParams({type: 'SORT_BY_NUMBER' , payload:e.target.dataset.item } , e.target.dataset.item)} 
+                className={isActiveTab === 'descendingNumber' ? styles.active_triangleDown :styles.triangleDown}>
+              </div>
             </div>
           </div>
         </td>

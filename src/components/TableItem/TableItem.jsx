@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import TableList from '../TableList'
 import styles from './TableItem.module.css'
 
 const TableItem = () => {
 
-    let tableElements = useSelector(store => store.table.filtrSortData)
-    console.log(tableElements.status);
+    let tableElements = useSelector(store => store.table.filterSortData)
+    const sortValue = useSelector(store => store.table.sortValue)
+
+    useEffect( () => {} ,[sortValue] )
   return (
     <>
         {
