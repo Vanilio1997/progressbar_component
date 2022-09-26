@@ -9,7 +9,8 @@ let initialState = {
     projectsFilter: projectsTypeArr,
     tokenTypeFilter: tokenTypeArr,
     filterSortData: tableData,
-    sortValue: ''
+    sortValue: '',
+    searchInputValue: ''
 }
 
 
@@ -26,8 +27,16 @@ export const dataReducer = (state = initialState , action) =>{
         }
         case 'PROJECTS_FILTER' : {
 
-            const {tableData , projectFilterData} = mainFilterFunc(state.tableData , action.payload,state.projectsFilter ,state.sortValue)
+            const {tableData , projectFilterData} = mainFilterFunc({data:state.tableData , checkboxId:action.payload, projectFilterObj:state.projectsFilter ,inputValue:state.searchInputValue})
             return {...state , filterSortData: tableData , projectsFilter: projectFilterData}
+        }
+        case 'TOKEN_TYPE_SEARCH' : {
+            const {tableData} = mainFilterFunc({data: state.tableData ,inputValue: state.searchInputValue ,projectFilterObj: state.projectsFilter , checkboxId: false })
+            console.log(action.payload);
+            return {...state, filterSortData: tableData}
+        }
+        case 'CHANGE_INPUT_VALUE' : {
+            return {...state , searchInputValue: action.payload}
         }
         default: 
             return state

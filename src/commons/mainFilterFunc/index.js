@@ -1,3 +1,3 @@
-import { mainFilterFunc } from "./mainFulterFunc";
+import { mainFilterFunc } from "./mainFIlterFunc";
 
 export default mainFilterFunc

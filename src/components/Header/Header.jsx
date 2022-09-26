@@ -2,6 +2,7 @@ import React , {useState} from 'react'
 import styles from './Header.module.css'
 import { useSelector , useDispatch} from 'react-redux'
 import Filter from '../Filter'
+import Search from '../Search'
 
 
 export const Header = () => {
@@ -45,7 +46,7 @@ export const Header = () => {
         </td>
         <td> 
           <span className={styles.filterSettings} onClick={() => setIsTokensTypeFilter(!isTokensTypeFilter)}>All</span>
-          {isTokensTypeFilter && <Filter filterSettings={tokenTypeFilter} />}
+          {isTokensTypeFilter && <Search/>}
           Token Type
         </td>
         <td>Conditions</td>

@@ -1,21 +1,22 @@
-export const filterByProjectName = (data , id , projectsFilterData,sortingValue) =>{
-    let projectsFiltredData = projectsFilterData
+export const filterByProjectName = ({data,projectFilterObj,checkboxId}) =>{
+    let projectsFiltredData = projectFilterObj
     let newData 
 
-    projectsFiltredData = projectsFilterData.map(project  => {
-       if(project.id === id) {
-            return ({...project , isChecked: !project.isChecked}) 
-       } else{
-            return project
-       }
+    projectsFiltredData = projectFilterObj.map(project  => {
+          if(project.id === checkboxId) {
+               return ({...project , isChecked: !project.isChecked}) 
+          } else {
+               return project
+          }
     })
-
-
-    projectsFiltredData.forEach(item => {
-       if( item.filterType === data.name && item.isChecked){
-         newData = data
-        } 
+console.log(projectsFiltredData , data);
+    
+     projectsFiltredData.forEach(item => {
+          if( item.filterType === data.name && item.isChecked){
+               newData = data
+          } 
     })
+ 
     return newData
 
 }
