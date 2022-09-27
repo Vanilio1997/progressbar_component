@@ -26,7 +26,7 @@ export const dataReducer = (state = initialState , action) =>{
         }
         case 'PROJECTS_FILTER' : {
 
-            const {tableData , projectFilterData} = mainFilterFunc({data:state.tableData , checkboxId:action.payload, projectFilterObj:state.projectsFilter ,inputValue:state.searchInputValue})
+            const {tableData , projectFilterData} = mainFilterFunc({data:state.tableData , checkboxId:action.payload, projectFilterObj:state.projectsFilter ,inputValue:state.searchInputValue, sortValue: state.sortValue})
             return {...state , filterSortData: tableData , projectsFilter: projectFilterData}
         }
         case 'TOKEN_TYPE_SEARCH' : {
