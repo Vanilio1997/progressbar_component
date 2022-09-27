@@ -5,7 +5,7 @@ import Filter from '../Filter'
 import Search from '../Search'
 
 
-export const Header = () => {
+export const TableHeader = () => {
 
   const projectsFilter = useSelector(store => store.table.projectsFilter)
   const tokenTypeFilter = useSelector(store => store.table.tokenTypeFilter)

@@ -1,14 +1,17 @@
 import './App.css';
-import Header from './components/Header';
-import TableItem from './components/TableItem/TableItem';
+import { Table } from './components/Table/Table';
+import { SinglePage } from './components/SinglePage/SinglePage';
+import {Routes, Route} from 'react-router-dom'
+
+
 
 function App() {
   return (
     <div className="App">
-      <table className='table_container'>
-        <Header />
-        <TableItem />
-      </table>
+      <Routes>
+        <Route path='/' element={<Table />} />
+        <Route path='project/:id' element={<SinglePage />} />
+      </Routes>
     </div>
   );
 }

@@ -22,7 +22,6 @@ export const dataReducer = (state = initialState , action) =>{
         }
         case 'SORT_BY_TEXT' : {
             const newData = sortingByText( state.filterSortData , action.payload)
-            console.log(newData);
             return {...state , filterSortData: newData,sortValue: action.payload}
         }
         case 'PROJECTS_FILTER' : {
@@ -32,7 +31,6 @@ export const dataReducer = (state = initialState , action) =>{
         }
         case 'TOKEN_TYPE_SEARCH' : {
             const {tableData} = mainFilterFunc({data: state.tableData ,inputValue: state.searchInputValue ,projectFilterObj: state.projectsFilter , checkboxId: false })
-            console.log(action.payload);
             return {...state, filterSortData: tableData}
         }
         case 'CHANGE_INPUT_VALUE' : {

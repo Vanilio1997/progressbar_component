@@ -1,3 +1,3 @@
-import { TableList } from "./TableList";
+import { TableList } from "./TableList"
 
 export default TableList

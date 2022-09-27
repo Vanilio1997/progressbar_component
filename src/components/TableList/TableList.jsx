@@ -1,60 +1,21 @@
-import React from 'react'
-import styles from './TableList.module.css'
+import React, {useEffect} from 'react'
+import { useSelector } from 'react-redux'
+import TableItem from '../TableItem'
 
-export const TableList = (props) => {
-    const {id, name, status, roi, type, conditions, free, hedge, volume} = props.tableElement
-    
-    let backgroundColor = ''
-    switch(status){
-      case 'red' :
-        backgroundColor = '#FFB6C1';
-        break
-      case 'green' : 
-      backgroundColor = '#90EE90';
-        break        
-      default :
-      backgroundColor = '#FFFFE0'
-    }
 
-    let currentVolume = []
-    let valueNumberArr = volume.toString().split('')
-    let numberPlace = 0
 
-    const btnClick = (e) => {
-      e.stopPropagation()
-      alert(id)
-    }
+export const TableList = () => {
 
-    for(let i = valueNumberArr.length - 1 ;  i>= 0 ; i--){
-      numberPlace++
-      if(numberPlace === 3){
-        numberPlace = 0;
-        currentVolume.push(valueNumberArr[i])
-        if(i!== 0){
-          currentVolume.push(' ')
-        }
-      } else {
-        currentVolume.push(valueNumberArr[i])
-      }
-    }
+  let tableElements = useSelector(store => store.table.filterSortData)
+  const sortValue = useSelector(store => store.table.sortValue)
 
-    currentVolume = currentVolume.reverse().join('')
-
+  useEffect( () => {} ,[sortValue] )
   return (
-    <tr style={{backgroundColor: backgroundColor}} className={styles.container} onClick={(e) =>  console.log(e)}>
-    <td>
-      <div className={styles.projectName_container}>
-        <div  className={styles.circle} style={{backgroundColor: status}}></div>
-        {name}
-      </div>
-    </td>
-      <td>{type}</td>
-      <td>{conditions}</td>
-      <td>${currentVolume}</td>
-      <td>{roi} %</td>
-      <td>{free}</td>
-      <td>{hedge}%</td>
-      <td><button onClick={btnClick} className={styles.btn}>buy</button></td>
-    </tr>
+    <>
+        {
+            tableElements.map(element =>  <TableItem  tableElement={element} /> )
+        }
+    </>
   )
 }
+

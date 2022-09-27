@@ -6,7 +6,6 @@ export const Search = () => {
     const dispatch = useDispatch()
     const [handelInput, setHandelInput] = useState('')
     const inputValue = useSelector(state => state.table.searchInputValue)
-    console.log(inputValue);
 
     return (
         <div>

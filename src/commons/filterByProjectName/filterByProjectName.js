@@ -9,7 +9,6 @@ export const filterByProjectName = ({data,projectFilterObj,checkboxId}) =>{
                return project
           }
     })
-console.log(projectsFiltredData , data);
     
      projectsFiltredData.forEach(item => {
           if( item.filterType === data.name && item.isChecked){
